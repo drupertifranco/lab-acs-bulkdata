@@ -1,0 +1,90 @@
+version: '3.8'
+
+services:
+  genieacs:
+    image: drumsergio/genieacs:1.2.13
+    container_name: genieacs
+    ports:
+      - "3010:3000"
+      - "7547:7547"
+      - "7557:7557"
+    environment:
+      - USER_PASSWORD=fyco
+      - GENIEACS_MONGODB_CONNECTION_URL=mongodb://mongo/genieacs
+      - GENIEACS_UI_JWT_SECRET=admin
+    depends_on: [mongo]
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.16
+
+  mongo:
+    image: mongo
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.17
+
+  filebrowser:
+    image: filebrowser/filebrowser:v2-s6
+    container_name: filebrowser
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Bogota
+    volumes:
+      - ./data:/srv              # <- raíz visible en la UI
+      - ./filebrowser/config:/config
+    ports:
+      - "8081:80"
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.19
+
+  vector:
+    image: timberio/vector:0.51.0-debian  # <- estable y con herramientas
+    container_name: bulk-collector
+    user: "1000:1000"                     # <- mismo uid/gid que filebrowser
+    environment:
+      - VECTOR_LOG=debug                  # <- logs verbosos para probar
+    command: ["--config", "/etc/vector/vector.yaml"]
+    ports:
+      - "8080:8080"                       # <- endpoint HTTP del colector
+    volumes:
+      - ./vector-1.yaml:/etc/vector/vector.yaml:ro
+      - ./data:/data
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.20
+
+  cpe0:
+    image: drumsergio/genieacs-sim:latest
+    container_name: cpe-0
+    depends_on: [genieacs]
+    command:
+      - sh
+      - -c
+      - timeout 5 ./genieacs-sim -u http://10.64.1.16:7547/ -s 0000001
+    volumes:
+      - ./configs/ont/data_model_202BC1-BM632w-8KA8WA1151100043.csv:/opt/genieacs-sim/data_model_202BC1-BM632w-8KA8WA1151100043.csv:ro
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.21
+
+# Para escalar hasta 50 CPE usar archivo adicional generado: cpe-services.yaml
+# Ejecutar con:
+#   docker compose -f docker-compose.yml -f cpe-services.yaml up -d
+# (Asegúrate de haber creado la red primero si es externa.)
+    
+networks:
+  genieacs_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.64.1.0/24

@@ -1,0 +1,564 @@
+version: '3.8'
+services:
+  # CPE simulados generados automáticamente
+  # Serial inicial: 111111 incrementa de a 1 hasta 111160
+  # IPs: 10.64.1.21 .. 10.64.1.70
+  # IMPORTANTE: El comando tiene timeout 5, luego el contenedor termina y se reinicia.
+  # Si deseas que permanezcan vivos agrega: '; tail -f /dev/null' al final.
+
+# Inicio bloque generado
+  cpe1:
+    image: drumsergio/genieacs-sim:latest
+    container_name: cpe-1
+    depends_on: [genieacs]
+    command: ["sh","-c","timeout 5 ./genieacs-sim -u http://10.64.1.16:7547/ -s 111111"]
+    volumes:
+      - ./configs/ont/data_model_202BC1-BM632w-8KA8WA1151100043.csv:/opt/genieacs-sim/data_model_202BC1-BM632w-8KA8WA1151100043.csv:ro
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.21
+  cpe2:
+    image: drumsergio/genieacs-sim:latest
+    container_name: cpe-2
+    depends_on: [genieacs]
+    command: ["sh","-c","timeout 5 ./genieacs-sim -u http://10.64.1.16:7547/ -s 111112"]
+    volumes:
+      - ./configs/ont/data_model_202BC1-BM632w-8KA8WA1151100043.csv:/opt/genieacs-sim/data_model_202BC1-BM632w-8KA8WA1151100043.csv:ro
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.22
+  cpe3:
+    image: drumsergio/genieacs-sim:latest
+    container_name: cpe-3
+    depends_on: [genieacs]
+    command: ["sh","-c","timeout 5 ./genieacs-sim -u http://10.64.1.16:7547/ -s 111113"]
+    volumes:
+      - ./configs/ont/data_model_202BC1-BM632w-8KA8WA1151100043.csv:/opt/genieacs-sim/data_model_202BC1-BM632w-8KA8WA1151100043.csv:ro
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.23
+  cpe4:
+    image: drumsergio/genieacs-sim:latest
+    container_name: cpe-4
+    depends_on: [genieacs]
+    command: ["sh","-c","timeout 5 ./genieacs-sim -u http://10.64.1.16:7547/ -s 111114"]
+    volumes:
+      - ./configs/ont/data_model_202BC1-BM632w-8KA8WA1151100043.csv:/opt/genieacs-sim/data_model_202BC1-BM632w-8KA8WA1151100043.csv:ro
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.24
+  cpe5:
+    image: drumsergio/genieacs-sim:latest
+    container_name: cpe-5
+    depends_on: [genieacs]
+    command: ["sh","-c","timeout 5 ./genieacs-sim -u http://10.64.1.16:7547/ -s 111115"]
+    volumes:
+      - ./configs/ont/data_model_202BC1-BM632w-8KA8WA1151100043.csv:/opt/genieacs-sim/data_model_202BC1-BM632w-8KA8WA1151100043.csv:ro
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.25
+  cpe6:
+    image: drumsergio/genieacs-sim:latest
+    container_name: cpe-6
+    depends_on: [genieacs]
+    command: ["sh","-c","timeout 5 ./genieacs-sim -u http://10.64.1.16:7547/ -s 111116"]
+    volumes:
+      - ./configs/ont/data_model_202BC1-BM632w-8KA8WA1151100043.csv:/opt/genieacs-sim/data_model_202BC1-BM632w-8KA8WA1151100043.csv:ro
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.26
+  cpe7:
+    image: drumsergio/genieacs-sim:latest
+    container_name: cpe-7
+    depends_on: [genieacs]
+    command: ["sh","-c","timeout 5 ./genieacs-sim -u http://10.64.1.16:7547/ -s 111117"]
+    volumes:
+      - ./configs/ont/data_model_202BC1-BM632w-8KA8WA1151100043.csv:/opt/genieacs-sim/data_model_202BC1-BM632w-8KA8WA1151100043.csv:ro
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.27
+  cpe8:
+    image: drumsergio/genieacs-sim:latest
+    container_name: cpe-8
+    depends_on: [genieacs]
+    command: ["sh","-c","timeout 5 ./genieacs-sim -u http://10.64.1.16:7547/ -s 111118"]
+    volumes:
+      - ./configs/ont/data_model_202BC1-BM632w-8KA8WA1151100043.csv:/opt/genieacs-sim/data_model_202BC1-BM632w-8KA8WA1151100043.csv:ro
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.28
+  cpe9:
+    image: drumsergio/genieacs-sim:latest
+    container_name: cpe-9
+    depends_on: [genieacs]
+    command: ["sh","-c","timeout 5 ./genieacs-sim -u http://10.64.1.16:7547/ -s 111119"]
+    volumes:
+      - ./configs/ont/data_model_202BC1-BM632w-8KA8WA1151100043.csv:/opt/genieacs-sim/data_model_202BC1-BM632w-8KA8WA1151100043.csv:ro
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.29
+  cpe10:
+    image: drumsergio/genieacs-sim:latest
+    container_name: cpe-10
+    depends_on: [genieacs]
+    command: ["sh","-c","timeout 5 ./genieacs-sim -u http://10.64.1.16:7547/ -s 111120"]
+    volumes:
+      - ./configs/ont/data_model_202BC1-BM632w-8KA8WA1151100043.csv:/opt/genieacs-sim/data_model_202BC1-BM632w-8KA8WA1151100043.csv:ro
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.30
+  cpe11:
+    image: drumsergio/genieacs-sim:latest
+    container_name: cpe-11
+    depends_on: [genieacs]
+    command: ["sh","-c","timeout 5 ./genieacs-sim -u http://10.64.1.16:7547/ -s 111121"]
+    volumes:
+      - ./configs/ont/data_model_202BC1-BM632w-8KA8WA1151100043.csv:/opt/genieacs-sim/data_model_202BC1-BM632w-8KA8WA1151100043.csv:ro
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.31
+  cpe12:
+    image: drumsergio/genieacs-sim:latest
+    container_name: cpe-12
+    depends_on: [genieacs]
+    command: ["sh","-c","timeout 5 ./genieacs-sim -u http://10.64.1.16:7547/ -s 111122"]
+    volumes:
+      - ./configs/ont/data_model_202BC1-BM632w-8KA8WA1151100043.csv:/opt/genieacs-sim/data_model_202BC1-BM632w-8KA8WA1151100043.csv:ro
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.32
+  cpe13:
+    image: drumsergio/genieacs-sim:latest
+    container_name: cpe-13
+    depends_on: [genieacs]
+    command: ["sh","-c","timeout 5 ./genieacs-sim -u http://10.64.1.16:7547/ -s 111123"]
+    volumes:
+      - ./configs/ont/data_model_202BC1-BM632w-8KA8WA1151100043.csv:/opt/genieacs-sim/data_model_202BC1-BM632w-8KA8WA1151100043.csv:ro
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.33
+  cpe14:
+    image: drumsergio/genieacs-sim:latest
+    container_name: cpe-14
+    depends_on: [genieacs]
+    command: ["sh","-c","timeout 5 ./genieacs-sim -u http://10.64.1.16:7547/ -s 111124"]
+    volumes:
+      - ./configs/ont/data_model_202BC1-BM632w-8KA8WA1151100043.csv:/opt/genieacs-sim/data_model_202BC1-BM632w-8KA8WA1151100043.csv:ro
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.34
+  cpe15:
+    image: drumsergio/genieacs-sim:latest
+    container_name: cpe-15
+    depends_on: [genieacs]
+    command: ["sh","-c","timeout 5 ./genieacs-sim -u http://10.64.1.16:7547/ -s 111125"]
+    volumes:
+      - ./configs/ont/data_model_202BC1-BM632w-8KA8WA1151100043.csv:/opt/genieacs-sim/data_model_202BC1-BM632w-8KA8WA1151100043.csv:ro
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.35
+  cpe16:
+    image: drumsergio/genieacs-sim:latest
+    container_name: cpe-16
+    depends_on: [genieacs]
+    command: ["sh","-c","timeout 5 ./genieacs-sim -u http://10.64.1.16:7547/ -s 111126"]
+    volumes:
+      - ./configs/ont/data_model_202BC1-BM632w-8KA8WA1151100043.csv:/opt/genieacs-sim/data_model_202BC1-BM632w-8KA8WA1151100043.csv:ro
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.36
+  cpe17:
+    image: drumsergio/genieacs-sim:latest
+    container_name: cpe-17
+    depends_on: [genieacs]
+    command: ["sh","-c","timeout 5 ./genieacs-sim -u http://10.64.1.16:7547/ -s 111127"]
+    volumes:
+      - ./configs/ont/data_model_202BC1-BM632w-8KA8WA1151100043.csv:/opt/genieacs-sim/data_model_202BC1-BM632w-8KA8WA1151100043.csv:ro
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.37
+  cpe18:
+    image: drumsergio/genieacs-sim:latest
+    container_name: cpe-18
+    depends_on: [genieacs]
+    command: ["sh","-c","timeout 5 ./genieacs-sim -u http://10.64.1.16:7547/ -s 111128"]
+    volumes:
+      - ./configs/ont/data_model_202BC1-BM632w-8KA8WA1151100043.csv:/opt/genieacs-sim/data_model_202BC1-BM632w-8KA8WA1151100043.csv:ro
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.38
+  cpe19:
+    image: drumsergio/genieacs-sim:latest
+    container_name: cpe-19
+    depends_on: [genieacs]
+    command: ["sh","-c","timeout 5 ./genieacs-sim -u http://10.64.1.16:7547/ -s 111129"]
+    volumes:
+      - ./configs/ont/data_model_202BC1-BM632w-8KA8WA1151100043.csv:/opt/genieacs-sim/data_model_202BC1-BM632w-8KA8WA1151100043.csv:ro
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.39
+  cpe20:
+    image: drumsergio/genieacs-sim:latest
+    container_name: cpe-20
+    depends_on: [genieacs]
+    command: ["sh","-c","timeout 5 ./genieacs-sim -u http://10.64.1.16:7547/ -s 111130"]
+    volumes:
+      - ./configs/ont/data_model_202BC1-BM632w-8KA8WA1151100043.csv:/opt/genieacs-sim/data_model_202BC1-BM632w-8KA8WA1151100043.csv:ro
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.40
+  cpe21:
+    image: drumsergio/genieacs-sim:latest
+    container_name: cpe-21
+    depends_on: [genieacs]
+    command: ["sh","-c","timeout 5 ./genieacs-sim -u http://10.64.1.16:7547/ -s 111131"]
+    volumes:
+      - ./configs/ont/data_model_202BC1-BM632w-8KA8WA1151100043.csv:/opt/genieacs-sim/data_model_202BC1-BM632w-8KA8WA1151100043.csv:ro
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.41
+  cpe22:
+    image: drumsergio/genieacs-sim:latest
+    container_name: cpe-22
+    depends_on: [genieacs]
+    command: ["sh","-c","timeout 5 ./genieacs-sim -u http://10.64.1.16:7547/ -s 111132"]
+    volumes:
+      - ./configs/ont/data_model_202BC1-BM632w-8KA8WA1151100043.csv:/opt/genieacs-sim/data_model_202BC1-BM632w-8KA8WA1151100043.csv:ro
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.42
+  cpe23:
+    image: drumsergio/genieacs-sim:latest
+    container_name: cpe-23
+    depends_on: [genieacs]
+    command: ["sh","-c","timeout 5 ./genieacs-sim -u http://10.64.1.16:7547/ -s 111133"]
+    volumes:
+      - ./configs/ont/data_model_202BC1-BM632w-8KA8WA1151100043.csv:/opt/genieacs-sim/data_model_202BC1-BM632w-8KA8WA1151100043.csv:ro
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.43
+  cpe24:
+    image: drumsergio/genieacs-sim:latest
+    container_name: cpe-24
+    depends_on: [genieacs]
+    command: ["sh","-c","timeout 5 ./genieacs-sim -u http://10.64.1.16:7547/ -s 111134"]
+    volumes:
+      - ./configs/ont/data_model_202BC1-BM632w-8KA8WA1151100043.csv:/opt/genieacs-sim/data_model_202BC1-BM632w-8KA8WA1151100043.csv:ro
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.44
+  cpe25:
+    image: drumsergio/genieacs-sim:latest
+    container_name: cpe-25
+    depends_on: [genieacs]
+    command: ["sh","-c","timeout 5 ./genieacs-sim -u http://10.64.1.16:7547/ -s 111135"]
+    volumes:
+      - ./configs/ont/data_model_202BC1-BM632w-8KA8WA1151100043.csv:/opt/genieacs-sim/data_model_202BC1-BM632w-8KA8WA1151100043.csv:ro
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.45
+  cpe26:
+    image: drumsergio/genieacs-sim:latest
+    container_name: cpe-26
+    depends_on: [genieacs]
+    command: ["sh","-c","timeout 5 ./genieacs-sim -u http://10.64.1.16:7547/ -s 111136"]
+    volumes:
+      - ./configs/ont/data_model_202BC1-BM632w-8KA8WA1151100043.csv:/opt/genieacs-sim/data_model_202BC1-BM632w-8KA8WA1151100043.csv:ro
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.46
+  cpe27:
+    image: drumsergio/genieacs-sim:latest
+    container_name: cpe-27
+    depends_on: [genieacs]
+    command: ["sh","-c","timeout 5 ./genieacs-sim -u http://10.64.1.16:7547/ -s 111137"]
+    volumes:
+      - ./configs/ont/data_model_202BC1-BM632w-8KA8WA1151100043.csv:/opt/genieacs-sim/data_model_202BC1-BM632w-8KA8WA1151100043.csv:ro
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.47
+  cpe28:
+    image: drumsergio/genieacs-sim:latest
+    container_name: cpe-28
+    depends_on: [genieacs]
+    command: ["sh","-c","timeout 5 ./genieacs-sim -u http://10.64.1.16:7547/ -s 111138"]
+    volumes:
+      - ./configs/ont/data_model_202BC1-BM632w-8KA8WA1151100043.csv:/opt/genieacs-sim/data_model_202BC1-BM632w-8KA8WA1151100043.csv:ro
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.48
+  cpe29:
+    image: drumsergio/genieacs-sim:latest
+    container_name: cpe-29
+    depends_on: [genieacs]
+    command: ["sh","-c","timeout 5 ./genieacs-sim -u http://10.64.1.16:7547/ -s 111139"]
+    volumes:
+      - ./configs/ont/data_model_202BC1-BM632w-8KA8WA1151100043.csv:/opt/genieacs-sim/data_model_202BC1-BM632w-8KA8WA1151100043.csv:ro
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.49
+  cpe30:
+    image: drumsergio/genieacs-sim:latest
+    container_name: cpe-30
+    depends_on: [genieacs]
+    command: ["sh","-c","timeout 5 ./genieacs-sim -u http://10.64.1.16:7547/ -s 111140"]
+    volumes:
+      - ./configs/ont/data_model_202BC1-BM632w-8KA8WA1151100043.csv:/opt/genieacs-sim/data_model_202BC1-BM632w-8KA8WA1151100043.csv:ro
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.50
+  cpe31:
+    image: drumsergio/genieacs-sim:latest
+    container_name: cpe-31
+    depends_on: [genieacs]
+    command: ["sh","-c","timeout 5 ./genieacs-sim -u http://10.64.1.16:7547/ -s 111141"]
+    volumes:
+      - ./configs/ont/data_model_202BC1-BM632w-8KA8WA1151100043.csv:/opt/genieacs-sim/data_model_202BC1-BM632w-8KA8WA1151100043.csv:ro
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.51
+  cpe32:
+    image: drumsergio/genieacs-sim:latest
+    container_name: cpe-32
+    depends_on: [genieacs]
+    command: ["sh","-c","timeout 5 ./genieacs-sim -u http://10.64.1.16:7547/ -s 111142"]
+    volumes:
+      - ./configs/ont/data_model_202BC1-BM632w-8KA8WA1151100043.csv:/opt/genieacs-sim/data_model_202BC1-BM632w-8KA8WA1151100043.csv:ro
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.52
+  cpe33:
+    image: drumsergio/genieacs-sim:latest
+    container_name: cpe-33
+    depends_on: [genieacs]
+    command: ["sh","-c","timeout 5 ./genieacs-sim -u http://10.64.1.16:7547/ -s 111143"]
+    volumes:
+      - ./configs/ont/data_model_202BC1-BM632w-8KA8WA1151100043.csv:/opt/genieacs-sim/data_model_202BC1-BM632w-8KA8WA1151100043.csv:ro
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.53
+  cpe34:
+    image: drumsergio/genieacs-sim:latest
+    container_name: cpe-34
+    depends_on: [genieacs]
+    command: ["sh","-c","timeout 5 ./genieacs-sim -u http://10.64.1.16:7547/ -s 111144"]
+    volumes:
+      - ./configs/ont/data_model_202BC1-BM632w-8KA8WA1151100043.csv:/opt/genieacs-sim/data_model_202BC1-BM632w-8KA8WA1151100043.csv:ro
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.54
+  cpe35:
+    image: drumsergio/genieacs-sim:latest
+    container_name: cpe-35
+    depends_on: [genieacs]
+    command: ["sh","-c","timeout 5 ./genieacs-sim -u http://10.64.1.16:7547/ -s 111145"]
+    volumes:
+      - ./configs/ont/data_model_202BC1-BM632w-8KA8WA1151100043.csv:/opt/genieacs-sim/data_model_202BC1-BM632w-8KA8WA1151100043.csv:ro
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.55
+  cpe36:
+    image: drumsergio/genieacs-sim:latest
+    container_name: cpe-36
+    depends_on: [genieacs]
+    command: ["sh","-c","timeout 5 ./genieacs-sim -u http://10.64.1.16:7547/ -s 111146"]
+    volumes:
+      - ./configs/ont/data_model_202BC1-BM632w-8KA8WA1151100043.csv:/opt/genieacs-sim/data_model_202BC1-BM632w-8KA8WA1151100043.csv:ro
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.56
+  cpe37:
+    image: drumsergio/genieacs-sim:latest
+    container_name: cpe-37
+    depends_on: [genieacs]
+    command: ["sh","-c","timeout 5 ./genieacs-sim -u http://10.64.1.16:7547/ -s 111147"]
+    volumes:
+      - ./configs/ont/data_model_202BC1-BM632w-8KA8WA1151100043.csv:/opt/genieacs-sim/data_model_202BC1-BM632w-8KA8WA1151100043.csv:ro
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.57
+  cpe38:
+    image: drumsergio/genieacs-sim:latest
+    container_name: cpe-38
+    depends_on: [genieacs]
+    command: ["sh","-c","timeout 5 ./genieacs-sim -u http://10.64.1.16:7547/ -s 111148"]
+    volumes:
+      - ./configs/ont/data_model_202BC1-BM632w-8KA8WA1151100043.csv:/opt/genieacs-sim/data_model_202BC1-BM632w-8KA8WA1151100043.csv:ro
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.58
+  cpe39:
+    image: drumsergio/genieacs-sim:latest
+    container_name: cpe-39
+    depends_on: [genieacs]
+    command: ["sh","-c","timeout 5 ./genieacs-sim -u http://10.64.1.16:7547/ -s 111149"]
+    volumes:
+      - ./configs/ont/data_model_202BC1-BM632w-8KA8WA1151100043.csv:/opt/genieacs-sim/data_model_202BC1-BM632w-8KA8WA1151100043.csv:ro
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.59
+  cpe40:
+    image: drumsergio/genieacs-sim:latest
+    container_name: cpe-40
+    depends_on: [genieacs]
+    command: ["sh","-c","timeout 5 ./genieacs-sim -u http://10.64.1.16:7547/ -s 111150"]
+    volumes:
+      - ./configs/ont/data_model_202BC1-BM632w-8KA8WA1151100043.csv:/opt/genieacs-sim/data_model_202BC1-BM632w-8KA8WA1151100043.csv:ro
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.60
+  cpe41:
+    image: drumsergio/genieacs-sim:latest
+    container_name: cpe-41
+    depends_on: [genieacs]
+    command: ["sh","-c","timeout 5 ./genieacs-sim -u http://10.64.1.16:7547/ -s 111151"]
+    volumes:
+      - ./configs/ont/data_model_202BC1-BM632w-8KA8WA1151100043.csv:/opt/genieacs-sim/data_model_202BC1-BM632w-8KA8WA1151100043.csv:ro
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.61
+  cpe42:
+    image: drumsergio/genieacs-sim:latest
+    container_name: cpe-42
+    depends_on: [genieacs]
+    command: ["sh","-c","timeout 5 ./genieacs-sim -u http://10.64.1.16:7547/ -s 111152"]
+    volumes:
+      - ./configs/ont/data_model_202BC1-BM632w-8KA8WA1151100043.csv:/opt/genieacs-sim/data_model_202BC1-BM632w-8KA8WA1151100043.csv:ro
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.62
+  cpe43:
+    image: drumsergio/genieacs-sim:latest
+    container_name: cpe-43
+    depends_on: [genieacs]
+    command: ["sh","-c","timeout 5 ./genieacs-sim -u http://10.64.1.16:7547/ -s 111153"]
+    volumes:
+      - ./configs/ont/data_model_202BC1-BM632w-8KA8WA1151100043.csv:/opt/genieacs-sim/data_model_202BC1-BM632w-8KA8WA1151100043.csv:ro
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.63
+  cpe44:
+    image: drumsergio/genieacs-sim:latest
+    container_name: cpe-44
+    depends_on: [genieacs]
+    command: ["sh","-c","timeout 5 ./genieacs-sim -u http://10.64.1.16:7547/ -s 111154"]
+    volumes:
+      - ./configs/ont/data_model_202BC1-BM632w-8KA8WA1151100043.csv:/opt/genieacs-sim/data_model_202BC1-BM632w-8KA8WA1151100043.csv:ro
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.64
+  cpe45:
+    image: drumsergio/genieacs-sim:latest
+    container_name: cpe-45
+    depends_on: [genieacs]
+    command: ["sh","-c","timeout 5 ./genieacs-sim -u http://10.64.1.16:7547/ -s 111155"]
+    volumes:
+      - ./configs/ont/data_model_202BC1-BM632w-8KA8WA1151100043.csv:/opt/genieacs-sim/data_model_202BC1-BM632w-8KA8WA1151100043.csv:ro
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.65
+  cpe46:
+    image: drumsergio/genieacs-sim:latest
+    container_name: cpe-46
+    depends_on: [genieacs]
+    command: ["sh","-c","timeout 5 ./genieacs-sim -u http://10.64.1.16:7547/ -s 111156"]
+    volumes:
+      - ./configs/ont/data_model_202BC1-BM632w-8KA8WA1151100043.csv:/opt/genieacs-sim/data_model_202BC1-BM632w-8KA8WA1151100043.csv:ro
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.66
+  cpe47:
+    image: drumsergio/genieacs-sim:latest
+    container_name: cpe-47
+    depends_on: [genieacs]
+    command: ["sh","-c","timeout 5 ./genieacs-sim -u http://10.64.1.16:7547/ -s 111157"]
+    volumes:
+      - ./configs/ont/data_model_202BC1-BM632w-8KA8WA1151100043.csv:/opt/genieacs-sim/data_model_202BC1-BM632w-8KA8WA1151100043.csv:ro
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.67
+  cpe48:
+    image: drumsergio/genieacs-sim:latest
+    container_name: cpe-48
+    depends_on: [genieacs]
+    command: ["sh","-c","timeout 5 ./genieacs-sim -u http://10.64.1.16:7547/ -s 111158"]
+    volumes:
+      - ./configs/ont/data_model_202BC1-BM632w-8KA8WA1151100043.csv:/opt/genieacs-sim/data_model_202BC1-BM632w-8KA8WA1151100043.csv:ro
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.68
+  cpe49:
+    image: drumsergio/genieacs-sim:latest
+    container_name: cpe-49
+    depends_on: [genieacs]
+    command: ["sh","-c","timeout 5 ./genieacs-sim -u http://10.64.1.16:7547/ -s 111159"]
+    volumes:
+      - ./configs/ont/data_model_202BC1-BM632w-8KA8WA1151100043.csv:/opt/genieacs-sim/data_model_202BC1-BM632w-8KA8WA1151100043.csv:ro
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.69
+  cpe50:
+    image: drumsergio/genieacs-sim:latest
+    container_name: cpe-50
+    depends_on: [genieacs]
+    command: ["sh","-c","timeout 5 ./genieacs-sim -u http://10.64.1.16:7547/ -s 111160"]
+    volumes:
+      - ./configs/ont/data_model_202BC1-BM632w-8KA8WA1151100043.csv:/opt/genieacs-sim/data_model_202BC1-BM632w-8KA8WA1151100043.csv:ro
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.70
+# Fin bloque generado
+
+networks:
+  genieacs_net:
+    external: true

@@ -1,0 +1,18 @@
+sources:
+  bulkdata:
+    type: http_server
+    address: 0.0.0.0:8080
+    method: POST
+    path: /bulkdata
+    strict_path: true
+    # Si el ONT envía CSV o JSON, guardaremos el cuerpo tal cual como texto
+    encoding: text
+    response_code: 204
+
+sinks:
+  to_file:
+    type: file
+    inputs: [bulkdata]
+    path: /data/bulkdata/bulk-%Y%m%d-%H%M%S-%s.log
+    encoding:
+      codec: text

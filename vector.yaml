@@ -1,0 +1,17 @@
+sources:
+  bulkdata_in:
+    type: http_server
+    address: "0.0.0.0:8080"
+    path: "/bulkdata"        # coincide con tu curl y con la URL de la ONT
+    decoding:
+      codec: json            # acepta JSON como el de tu ejemplo
+
+sinks:
+  bulk_to_files:
+    type: file
+    inputs: [bulkdata_in]
+    path: "/data/bulkdata.jsonl"   # un archivo NDJSON (una línea por evento)
+    encoding:
+      codec: json
+    batch:
+      max_events: 1                 # escribe cada POST inmediatamente (sin buffer)

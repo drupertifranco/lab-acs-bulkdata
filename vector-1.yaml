@@ -1,0 +1,20 @@
+sources:
+  bulkdata:
+    type: http_server
+    address: "0.0.0.0:8080"
+    method: "POST"
+    path: "/bulkdata"
+    strict_path: false
+    response_code: 200
+    decoding:
+      codec: "json"   # <- antes decía "text" (inválido)
+    content_type: "application/json"
+
+sinks:
+  to_file:
+    type: file
+    inputs: ["bulkdata"]
+    path: "/data/bulkdata/bulk-%Y%m%d-%H%M%S-%s.json"
+    encoding:
+      codec: "json"
+    timezone: "local"

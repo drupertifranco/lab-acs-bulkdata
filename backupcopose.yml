@@ -1,0 +1,72 @@
+version: '3.8'
+
+services:
+
+  # genieacs service
+  genieacs:
+    image: drumsergio/genieacs:1.2.8
+    container_name: genieacs
+    ports:
+      - "3010:3000"   # UI
+      - "7547:7547"   # ACS
+      - "7557:7557"   # NBI
+    environment:
+      - USER_PASSWORD=fyco
+      - GENIEACS_MONGODB_CONNECTION_URL=mongodb://mongo/genieacs
+      - GENIEACS_UI_JWT_SECRET=admin
+    depends_on:
+      - mongo
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.16
+
+  # mongo service
+  mongo:
+    image: mongo
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    restart: unless-stopped
+    networks: 
+      genieacs_net:
+        ipv4_address: 10.64.1.17
+
+  # simple http server (nginx)
+  filebrowser:
+    image: filebrowser/filebrowser:v2-s6
+    container_name: filebrowser
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Bogota
+    volumes:
+      - ./data:/data
+      - ./filebrowser/config:/config
+    ports:
+      - "8081:80"
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.19
+
+  vector:
+    image: timberio/vector:nightly-distroless-libc
+    container_name: bulk-collector
+    command: ["--config", "/etc/vector/vector.yaml"]
+    ports:
+      - "8080:8080"           # <- endpoint HTTP del colector
+    volumes:
+      - ./vector-1.yaml:/etc/vector/vector.yaml:ro
+      - ./data:/data          # comparte /data con filebrowser
+    restart: unless-stopped
+    networks:
+      genieacs_net:
+        ipv4_address: 10.64.1.20
+
+networks:
+  genieacs_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.64.1.0/24
